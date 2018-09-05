@@ -82,11 +82,47 @@
 					</dict>
 				</dict>
 			</dict>
-
-			<!--Applications-->
+			<!--Same declaration, patterns, priorities and priority labels-->
 			<dict>
 				<key>match</key>
-				<string>\b(AbsoluteTimeout|AddQueueMember|ADSIProg|AgentCallbackLogin|AgentLogin|AgentMonitorOutgoing|AGI|AlarmReceiver|ALSAMonitor|Answer|AMD|AppendCDRUserField|Authenticate|BackGround|BackgroundDetect|AsteriskcmdBridge|Busy|CallingPres|ChangeMonitor|ChanIsAvail|ChannelRedirect|ChanSpy|CheckGroup|Congestion|ControlPlayback|DBdel|DBdeltree|DBQuery|DBRewrite|DeadAGI|Dial|Dictate|DigitTimeout|Directory|DISA|DTMFToText|DUNDiLookup|EAGI|Echo|EnumLookup|ExtenSpy|Festival|Flash|Flite|ForkCDR|GetCPEID|GetGroupCount|GetGroupMatchCount|Gosub|GosubIf|Goto|GotoIf|GotoIfTime|Hangup|HasNewVoicemail|AsteriskcmdHasVoicemail|ICES|ImportVar|JabberStatus|JabberSend|LookupBlacklist|LookupCIDName|Macro|MacroExclusive|AsteriskcmdMacroExit|MailboxExists|MeetMe|MeetMeAdmin|MeetMeCount|Milliwatt|AsteriskcmdMiniVM|MixMonitor|Monitor|MP3Player|MusicOnHold|MYSQL|AsteriskcmgNBScat|NoCDR|NoOp|Page|ParkAndAnnounce|ParkedCall|PauseQueueMember|Perl|AsteriskcmdPickup|PickUP|Playback|Playtones|PPPD|PrivacyManager|Progress|Queue|Read|RealTime|Record|RemoveQueueMember|ResetCDR|ResponseTimeout|RetryDial|Return|Ringing|Rpt|SayAlpha|SayDigits|SayNumber|SayPhonetic|SayUnixTime|SendDTMF|SendImage|SendText|SendURL|Set|SetAccount|SetAMAflags|SetCallerID|SetCallerPres|SetCDRUserField|SetGlobalVar|SetVar|SIPAddHeader|SIPCallPickup|SIPGetHeader|SIPdtmfMode|SMS|SoftHangup|SrxEchoCan|SrxDeflect|SrxMWI|Steal|StackPop|StopMonitor|StopPlaytones|System|Transfer|TestClient|TestServer|TrySystem|TXTCIDName|UnpauseQueueMember|UserEvent|VMAuthenticate|VoiceMail|VoiceMailMain|Wait|WaitExten|WaitForRing|WaitMusicOnHold|Zapateller|ZapBarge|ZapSendKeypadFacility|ZapRAS|ZapScan)\b</string>
+				<string>(^same =>)( (,([n]|\d+|\w+\s*\+\s*\d+|\(*.\))\b(\(([\w\d_-]+)\))?)?)?</string>
+				<key>captures</key>
+				<dict>
+					<!-- Extension declaration -->
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.other</string>
+					</dict>
+
+					<!-- Extension pattern -->
+					<key>3</key>
+					<dict>
+						<key>name</key>
+						<string>constant.regexp</string>
+					</dict>
+
+					<!-- Priority -->
+					<key>5</key>
+					<dict>
+						<key>name</key>
+						<string>constant.numeric</string>
+					</dict>
+
+					<!-- Priority label -->
+					<key>7</key>
+					<dict>
+						<key>name</key>
+						<string>constant.numeric</string>
+					</dict>
+				</dict>
+			</dict>
+
+			<!--Applications-->
+			<!-- applications list can be found by this link https://wiki.asterisk.org/wiki/display/AST/Asterisk+13+Dialplan+Applications -->
+			<dict>
+				<key>match</key>
+				<string>\b(AddQueueMember|ADSIProg|AELSub|AgentLogin|AgentRequest|AGI|AlarmReceiver|AMD|Answer|Authenticate|BackGround|BackgroundDetect|Bridge|BridgeWait|Busy|CallCompletionCancel|CallCompletionRequest|CELGenUserEvent|ChangeMonitor|ChanIsAvail|ChannelRedirect|ChanSpy|ClearHash|ConfBridge|Congestion|ContinueWhile|ControlPlayback|DAHDIAcceptR2Call|DAHDIRAS|DAHDIScan|DAHDISendCallreroutingFacility|DAHDISendKeypadFacility|DateTime|DBdel|DBdeltree|DeadAGI|Dial|Dictate|Directory|DISA|DumpChan|EAGI|Echo|EndWhile|Exec|ExecIf|ExecIfTime|ExitWhile|ExtenSpy|ExternalIVR|Festival|Flash|FollowMe|ForkCDR|GetCPEID|Gosub|GosubIf|Goto|GotoIf|GotoIfTime|Hangup|HangupCauseClear|IAX2Provision|ICES|ImportVar|Incomplete|IVRDemo|JabberJoin_res_xmpp|JabberLeave_res_xmpp|JabberSend_res_xmpp|JabberSendGroup_res_xmpp|JabberStatus_res_xmpp|JACK|Log|Macro|MacroExclusive|MacroExit|MacroIf|MailboxExists|MeetMe|MeetMeAdmin|MeetMeChannelAdmin|MeetMeCount|MessageSend|Milliwatt|MinivmAccMess|MinivmDelete|MinivmGreet|MinivmMWI|MinivmNotify|MinivmRecord|MixMonitor|Monitor|Morsecode|MP3Player|MSet|MusicOnHold|NBScat|NoCDR|NoOp|ODBC_Commit|ODBC_Rollback|ODBCFinish|Originate|OSPAuth|OSPFinish|OSPLookup|OSPNext|Page|Park|ParkAndAnnounce|ParkedCall|PauseMonitor|PauseQueueMember|Pickup|PickupChan|Playback|PlayTones|PrivacyManager|Proceeding|Progress|Queue|QueueLog|RaiseException|Read|ReadExten|ReceiveFAX_app_fax|ReceiveFAX_res_fax|Record|RemoveQueueMember|ResetCDR|RetryDial|Return|Ringing|SayAlpha|SayAlphaCase|SayCountedAdj|SayCountedNoun|SayDigits|SayNumber|SayPhonetic|SayUnixTime|SendDTMF|SendFAX_app_fax|SendFAX_res_fax|SendImage|SendText|SendURL|Set|SetAMAFlags|SetCallerPres|SIPAddHeader|SIPDtmfMode|SIPRemoveHeader|SIPSendCustomINFO|SkelGuessNumber|SLAStation|SLATrunk|SMS|SoftHangup|SpeechActivateGrammar|SpeechBackground|SpeechCreate|SpeechDeactivateGrammar|SpeechDestroy|SpeechLoadGrammar|SpeechProcessingSound|SpeechStart|SpeechUnloadGrammar|StackPop|StartMusicOnHold|Stasis|StopMixMonitor|StopMonitor|StopMusicOnHold|StopPlayTones|System|TestClient|TestServer|Transfer|TryExec|TrySystem|UnpauseMonitor|UnpauseQueueMember|UserEvent|Verbose|VMAuthenticate|VMSayName|VoiceMail|VoiceMailMain|VoiceMailPlayMsg|Wait|WaitExten|WaitForNoise|WaitForRing|WaitForSilence|WaitUntil|While|Zapateller|)\b</string>
 				<key>name</key>
 				<string>support.function.application</string>
 			</dict>
@@ -251,10 +287,11 @@
 			</dict>
 
 			<!--Functions with nested variables and functions -->
+			<!--Functions list can be found by this link https://wiki.asterisk.org/wiki/display/AST/Asterisk+13+Dialplan+Functions -->
 			<key>FunctionNested</key>
 			<dict>
 				<key>begin</key>
-				<string>(AES_DECRYPT|AES_ENCRYPT|AGC|AGENT|ARRAY|AST_CONFIG|AUDIOHOOK_INHERIT|BASE64_DECODE|BASE64_ENCODE|BLACKLIST|CALLERID|CALLERPRES|CDR|CHANNEL|CHANNELS|CHECKSIPDOMAIN|CHECK_MD5|CLEARHASH|CONFBRIDGE|CONFBRIDGE_INFO|CONNECTEDLINE|CSV_QUOTE|CURLOPT|CURL|CUT|DB_DELETE|DB_EXISTS|DB|DENOISE|DEVICE_STATE|DIALGROUP|DIALPLAN_EXISTS|DUNDILOOKUP|DUNDIQUERY|DUNDIRESULT|ENUMLOOKUP|ENUMQUERY|ENUMRESULT|ENV|EVAL|EXCEPTION|EXISTS|EXTENSION_STATE|FIELDQTY|FILE|FILTER|GETCODEC|GROUP_COUNT|GROUP_LIST|GROUP_MATCH_COUNT|GROUP|HASHKEYS|HASH|HINT|IAXCHANINFO|IAXPEER|IAXVAR|IFMODULE|IFTIME|IF|IMPORT|INC|ISNULL|JACK_HOOK|KEYPADHASH|LANGUAGE|LEN|LOCAL|LOCK|MATH|MD5|MUSICCLASS|ODBC|QUEUEAGENTCOUNT|QUEUE_MEMBER_COUNT|QUEUE_MEMBER_LIST|QUEUE_WAITING_COUNT|QUOTE|RAND|REALTIME|REGEX|REPLACE|SET|SHA1|SHARED|SHELL|SIPCHANINFO|SIPPEER|SIPADDHEADER|SIP_HEADER|SORT|SQL_ESC|STAT|STRFTIME|STRPTIME|SYSINFO|TIMEOUT|TOUPPER|TOLOWER|TRYLOCK|TXTCIDNAME|UNLOCK|URIDECODE|URIENCODE|VOLUME|VMCOUNT|DEC)(\()</string>
+				<string>(AES_DECRYPT|AES_ENCRYPT|AGC|AGENT|AMI_CLIENT|ARRAY|AST_CONFIG|AST_SORCERY|AUDIOHOOK_INHERIT|BASE64_DECODE|BASE64_ENCODE|BLACKLIST|CALENDAR_BUSY|CALENDAR_EVENT|CALENDAR_QUERY|CALENDAR_QUERY_RESULT|CALENDAR_WRITE|CALLCOMPLETION|CALLERID|CALLERPRES|CDR|CDR_PROP|CHANNEL|CHANNELS|CHECKSIPDOMAIN|CONFBRIDGE|CONFBRIDGE_INFO|CONNECTEDLINE|CSV_QUOTE|CURL|CURLOPT|CUT|DB|DB_DELETE|DB_EXISTS|DB_KEYS|DEC|DENOISE|DEVICE_STATE|DIALGROUP|DIALPLAN_EXISTS|DUNDILOOKUP|DUNDIQUERY|DUNDIRESULT|ENUMLOOKUP|ENUMQUERY|ENUMRESULT|ENV|EVAL|EXCEPTION|EXISTS|EXTENSION_STATE|FAXOPT_res_fax|FEATURE|FEATUREMAP|FIELDNUM|FIELDQTY|FILE|FILE_COUNT_LINE|FILE_FORMAT|FILTER|FRAME_TRACE|GLOBAL|GROUP|GROUP_COUNT|GROUP_LIST|GROUP_MATCH_COUNT|HANGUPCAUSE|HANGUPCAUSE_KEYS|HASH|HASHKEYS|HINT|HOLD_INTERCEPT|IAXPEER|IAXVAR|ICONV|IF|IFMODULE|IFTIME|IMPORT|INC|ISNULL|JABBER_RECEIVE_res_xmpp|JABBER_STATUS_res_xmpp|JITTERBUFFER|KEYPADHASH|LEN|LISTFILTER|LOCAL|LOCAL_PEEK|LOCK|MAILBOX_EXISTS|MASTER_CHANNEL|MATH|MD5|MEETME_INFO|MESSAGE|MESSAGE_DATA|MINIVMACCOUNT|MINIVMCOUNTER|MIXMONITOR|MUTEAUDIO|ODBC|ODBC_FETCH|PASSTHRU|PERIODIC_HOOK|PITCH_SHIFT|PJSIP_AOR|PJSIP_CONTACT|PJSIP_DIAL_CONTACTS|PJSIP_DTMF_MODE|PJSIP_ENDPOINT|PJSIP_HEADER|PJSIP_MEDIA_OFFER|PJSIP_SEND_SESSION_REFRESH|POP|PP_EACH_EXTENSION|PP_EACH_USER|PRESENCE_STATE|PUSH|QUEUE_EXISTS|QUEUE_MEMBER|QUEUE_MEMBER_COUNT|QUEUE_MEMBER_LIST|QUEUE_MEMBER_PENALTY|QUEUE_VARIABLES|QUEUE_WAITING_COUNT|QUOTE|RAND|REALTIME|REALTIME_DESTROY|REALTIME_FIELD|REALTIME_HASH|REALTIME_STORE|REDIRECTING|REGEX|REPLACE|SET|SHA1|SHARED|SHELL|SHIFT|SIP_HEADER|SIPPEER|SMDI_MSG|SMDI_MSG_RETRIEVE|SORT|SPEECH|SPEECH_ENGINE|SPEECH_GRAMMAR|SPEECH_RESULTS_TYPE|SPEECH_SCORE|SPEECH_TEXT|SPRINTF|SQL_ESC|SRVQUERY|SRVRESULT|STACK_PEEK|STAT|STRFTIME|STRPTIME|STRREPLACE|SYSINFO|TALK_DETECT|TESTTIME|TIMEOUT|TOLOWER|TOUPPER|TRYLOCK|TXTCIDNAME|UNLOCK|UNSHIFT|URIDECODE|URIENCODE|VALID_EXTEN|VERSION|VM_INFO|VMCOUNT|VOLUME|)(\()</string>
 				<key>beginCaptures</key>
 				<dict>
 					<key>1</key>

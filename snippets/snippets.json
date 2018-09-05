@@ -5,5 +5,12 @@
             "exten => ${1:_X.},${2:n},${3}(${4})"
         ],
         "description": "New extension"
-    }
+    },
+    "Add same": {
+		"prefix": "sa",
+		"body": [
+			"same => n,$1($2)"
+		],
+		"description": "the new same string"
+	}
 }
